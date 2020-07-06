@@ -241,6 +241,7 @@ e4d2c6253772459a9f372feea40ee4f7a587165d data/tconstruct/advancements/recipes/ma
 4463c206460f9d1ae53ef790ec1fa1905e943c09 data/tconstruct/advancements/recipes/materials/materials/string.json
 f2c61eb47fe0fa88611390ae511686e4b59539f5 data/tconstruct/advancements/recipes/materials/materials/wood_from_logs.json
 68a9747e8d718150794e31b2e207235ff2a1a1d7 data/tconstruct/advancements/recipes/materials/materials/wood_from_planks.json
+73ff9a2fa888e80a807b2e7627602cfeb36ed5c1 data/tconstruct/advancements/recipes/melting_fuel/melting/fuel/lava.json
 a06a3a8aeb06681c226c46b6e5b360b910e609ee data/tconstruct/advancements/recipes/misc/common/slime/green/slimeball_from_congealed.json
 cd99c130b3b2790a9700f3367022c553f6ac3ce4 data/tconstruct/advancements/recipes/parts/parts/hammer_head.json
 6635fff0bcfbbd52ce9349f831f27e024adc89bc data/tconstruct/advancements/recipes/parts/parts/large_plate.json
@@ -1039,6 +1040,7 @@ c279cf9c9ff6a4a771abaa877af8b2a6e8f32719 data/tconstruct/recipes/materials/stone
 1a0389d732a5e4df033a31bbec3b967925ea3d78 data/tconstruct/recipes/materials/string.json
 ce2b7cd44fed2d8ddd0d07ffc383604e2848d264 data/tconstruct/recipes/materials/wood_from_logs.json
 acd0d6f273e1ef6f81025df06ba6209c5ee40c7d data/tconstruct/recipes/materials/wood_from_planks.json
+a6777103417f976791ca9a979108429670489705 data/tconstruct/recipes/melting/fuel/lava.json
 8f9b7c139657345d263eb127e4058428c4563fe0 data/tconstruct/recipes/obsidian.json
 e0c75d95dde1e931dc72292218d9c4129d78a058 data/tconstruct/recipes/parts/hammer_head.json
 431b0002267a50c159021472dd98293ddf599be4 data/tconstruct/recipes/parts/large_plate.json
