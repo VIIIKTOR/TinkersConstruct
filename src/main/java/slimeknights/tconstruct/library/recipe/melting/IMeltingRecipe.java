@@ -29,7 +29,7 @@ public interface IMeltingRecipe extends IRecipe<ISingleItemInventory> {
 
   /**
    * Gets the recipe output for display, result should not be modified or added to an inventroy
-   * @return
+   * @return  Fluid output
    */
   FluidStack getOutput();
 
@@ -76,16 +76,15 @@ public interface IMeltingRecipe extends IRecipe<ISingleItemInventory> {
   double LOG9_2 = 0.31546487678;
 
   /**
-   * Calculates the temperature for a recipe based on the fluid result
-   * @param fluid  Fluid result
-   * @return  Temperature for the recipe in celsius
+   * Calculates the temperature for a recipe based on the amount and temperature
+   * @param temperature  Temperature baseline
+   * @param amount       Output amount
+   * @return
    */
-  static int calcTemperature(FluidStack fluid) {
-    int temp = fluid.getFluid().getAttributes().getTemperature(fluid);
-
+  static int calcTemperature(int temperature, int amount) {
     int base = MaterialValues.VALUE_Block;
-    int maxTemp = Math.max(0, temp - 300); // we use 0 as baseline, not 300
-    double f = (double) fluid.getAmount() / (double) base;
+    int maxTemp = Math.max(0, temperature); // we use 0 as baseline, not 300
+    double f = (double) amount / (double) base;
 
     // we calculate 2^log9(f), which effectively gives us 2^(1 for each multiple of 9)
     // so 1 = 1, 9 = 2, 81 = 4, 1/9 = 1/2, 1/81 = 1/4 etc
@@ -93,5 +92,14 @@ public interface IMeltingRecipe extends IRecipe<ISingleItemInventory> {
     f = Math.pow(f, LOG9_2);
 
     return (int) (f * (double) maxTemp);
+  }
+
+  /**
+   * Calculates the temperature for a recipe based on the fluid result
+   * @param fluid  Fluid result
+   * @return  Temperature for the recipe in celsius
+   */
+  static int calcTemperature(FluidStack fluid) {
+    return calcTemperature(fluid.getFluid().getAttributes().getTemperature(fluid) - 300, fluid.getAmount());
   }
 }

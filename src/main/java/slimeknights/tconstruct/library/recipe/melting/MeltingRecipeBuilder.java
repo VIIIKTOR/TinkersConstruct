@@ -1,6 +1,7 @@
 package slimeknights.tconstruct.library.recipe.melting;
 
 import com.google.gson.JsonObject;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.minecraft.advancements.Advancement.Builder;
@@ -16,12 +17,39 @@ import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
 
-@AllArgsConstructor(staticName="melting")
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class MeltingRecipeBuilder extends AbstractRecipeBuilder<MeltingRecipeBuilder> {
   private final Ingredient input;
   private final FluidStack output;
   private final int temperature;
+
+  /**
+   * Creates a new builder instance using a specific temperature
+   * @param input        Recipe input
+   * @param output       Recipe output
+   * @param temperature  Temperature required
+   * @return  Builder instance
+   */
+  public static MeltingRecipeBuilder melting(Ingredient input, FluidStack output, int temperature) {
+    if (temperature <= 0) {
+      throw new IllegalArgumentException("Invalid temperature " + temperature + ", must be greater than zero");
+    }
+    return new MeltingRecipeBuilder(input, output, temperature);
+  }
+
+  /**
+   * Creates a new builder instance using a specific temperature
+   * @param input        Recipe input
+   * @param fluid   Fluid result
+   * @param amount  Fluid returned from recipe
+   * @param temperature  Temperature required
+   * @return  Builder instance
+   */
+  public static MeltingRecipeBuilder melting(Ingredient input, Fluid fluid, int amount, ToIntFunction<Integer> temperature) {
+    return melting(input, new FluidStack(fluid, amount), temperature.applyAsInt(amount));
+  }
 
   /**
    * Creates a new builder instance using a calculated temperature

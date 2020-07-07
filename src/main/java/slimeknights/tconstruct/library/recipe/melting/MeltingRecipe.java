@@ -1,6 +1,7 @@
 package slimeknights.tconstruct.library.recipe.melting;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -56,6 +57,10 @@ public class MeltingRecipe implements IMeltingRecipe {
         temperature = JSONUtils.getInt(json, "temperature");
       } else {
         temperature = IMeltingRecipe.calcTemperature(output);
+      }
+      // validate temperature
+      if (temperature <= 0) {
+        throw new JsonSyntaxException("Melting temperature must be greater than zero");
       }
 
       return new MeltingRecipe(id, input, output, temperature);
