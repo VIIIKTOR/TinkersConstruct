@@ -74,6 +74,12 @@ public class MeltingFuel implements IRecipe<IFluidInventory> {
     return ItemStack.EMPTY;
   }
 
+  /* Hide from recipe book until we have a working modded recipe book */
+  @Override
+  public boolean isDynamic() {
+    return true;
+  }
+
   /** @deprecated unused method */
   @Deprecated
   @Override
